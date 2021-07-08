@@ -13,7 +13,19 @@ export default function(settings){
     patch(getModule(m => m.type?.render?.displayName === "ChannelTextAreaContainer").type, "render", (args, res) => {
         // console.log(args, res)
         let module = findInReactTree(res, comp => comp?.className?.indexOf("buttons-") == 0)
-        if (!settings.get('gifButton', true)) delete module.children[module.children.length - 3]
-        if (!settings.get('stickerButton', true)) delete module.children[module.children.length - 2]
+        
+        // gif button
+        if (!settings.get('gifButton', true)) {
+            module.children.splice(
+                module.children.findIndex(element => element?.type?.type?.render?.displayName === "ChannelGIFPickerButton")
+            , 1)
+        }
+
+        // sticker button
+        if (!settings.get('stickerButton', true)) {
+            module.children.splice(
+                module.children.findIndex(element => element?.type?.type?.render?.displayName === "ChannelStickerPickerButton")
+                , 1)
+        }
     })
 }
