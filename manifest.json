@@ -1,0 +1,10 @@
+{
+    "name": "A user's tweaks",
+    "description": "Tweaks for your own client",
+    "version": "v1",
+    "author": {
+        "name": "A user",
+        "id": "264062457448759296"
+    },
+    "license": "MIT"
+}
