@@ -13,16 +13,17 @@ export default function (settings) {
     patch(getModule(m => m.default?.displayName === "ChannelAttachMenu"), "default", ([props], res) => {
         if (settings.get("attachmentOldStyle")) {
             if (!props.options || props.options.length > 1 || props.options[0]?.type !== "UPLOAD_A_FILE") return res
+            
             props.onClose()
             props.onFileUpload()
         }
     })
 
     //patch pluscircle
-    patch(getModule(m => m.default?.displayName === "PlusCirclePlay"), "default", (args, res) => {
-        if (args[0].foreground !== "attachButtonPlay-3iJ0mf" || !settings.get("attachmentExtraIcon", false)) return res
+    patch(getModule(m => m.default?.displayName === "PlusCirclePlay"), "default", ([props], res) => {
+        if ([props].foreground !== "attachButtonPlay-3iJ0mf" || !settings.get("attachmentExtraIcon", false)) return res
+        
         const currentChannel = getChannel(getChannelId())
-        console.log(currentChannel)
         const attachmentPerms = (UserPermissions.can(
             Permissions.ATTACH_FILES,
             currentChannel

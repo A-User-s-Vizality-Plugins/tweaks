@@ -4,6 +4,9 @@ import { SwitchItem, Category } from '@vizality/components/settings';
 
 export default memo(({ getSetting, updateSetting, toggleSetting }) => {
     return <>
+        {/*
+            Text Area
+        */}
         <Category
             icon="Pencil"
             title="Text Area"
@@ -34,6 +37,9 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             />
         </Category>
 
+        {/*
+            Attachment Button
+        */}
         <Category
             icon="FileUpload"
             title="Attachment Button"
@@ -55,6 +61,33 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                 value={getSetting('attachmentExtraIcon', false)}
                 onChange={() => {
                     toggleSetting('attachmentExtraIcon')
+                }}
+            />
+        </Category>
+
+        {/*
+            Toolbar
+        */}
+        <Category
+            icon="FileUpload"
+            title="Toolbar"
+            description="Manage discord's toolbar"
+            opened={getSetting('category-toolbar', false)}
+            onChange={() => toggleSetting('category-toolbar')}
+        >
+            <SwitchItem
+                children={[<SwitchIcon icon="HelpCircle" />, "Enable Help button"]}
+                value={getSetting('helpButton', true)}
+                onChange={() => {
+                    toggleSetting('helpButton')
+                }}
+            />
+
+            <SwitchItem
+                children={[<SwitchIcon icon="BellOff" />, "Enable Mute Channel button"]}
+                value={getSetting('muteChannelButton', true)}
+                onChange={() => {
+                    toggleSetting('muteChannelButton')
                 }}
             />
         </Category>

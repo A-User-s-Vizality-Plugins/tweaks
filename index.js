@@ -2,8 +2,6 @@ import React from 'react';
 import { Plugin } from '@vizality/entities';
 import { patch, unpatchAll } from '@vizality/patcher';
 import { getModule } from '@vizality/webpack';
-import { Icon } from '@vizality/components';
-import { findInReactTree } from '@vizality/util/React';
 import Settings from './Settings';
 import Tweaks from './tweaks';
 
@@ -19,7 +17,7 @@ export default class Unfeaturer extends Plugin {
         this.injectStyles("style.scss")
 
         for (const tweak of Object.values(Tweaks)) {
-            console.log(tweak)
+            if (typeof tweak !== "function") return
             tweak(this.settings)
         }
     }

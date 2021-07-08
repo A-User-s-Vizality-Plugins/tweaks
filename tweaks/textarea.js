@@ -7,30 +7,6 @@ export default function(settings){
     //pre patch
     patch(getModule(m => m.type?.render?.displayName === "ChannelTextAreaContainer").type, "render", ([props]) => {
         if (!settings.get('giftButton', true)) props.shouldRenderPremiumGiftButton = false
-
-        // const old_renderAttachButton = props.renderAttachButton;
-        // console.log(props.renderAttachButton)
-        // props.renderAttachButton = function () {
-        //     console.log(this, arguments)
-        //     let attachRes = old_renderAttachButton.apply(this, arguments);
-        //     console.log("original:", attachRes)
-        //     let attachResProps = attachRes.props
-
-        //     const attachmentPerms = (UserPermissions.can(
-        //         Permissions.ATTACH_FILES,
-        //         attachRes.props.channel
-        //     ) && UserPermissions.can(
-        //         Permissions.SEND_MESSAGES,
-        //         attachRes.props.channel
-        //     )) ||
-        //         attachRes.props.channel.type == 1 || // DM
-        //         attachRes.props.channel.type == 3 // Group DM
-
-        //     //console.log(<Icon name='Folder' />)
-        //     if (!attachmentPerms) attachRes = <Icon name='Folder' {...attachResProps}/>
-        //     console.log(attachRes)
-        //     return attachRes;
-        // }
     }, "before")
 
     //pos patch
