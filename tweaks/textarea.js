@@ -25,7 +25,7 @@ export default function(settings){
         if (!settings.get('stickerButton', true)) {
             module.children.splice(
                 module.children.findIndex(element => element?.type?.type?.render?.displayName === "ChannelStickerPickerButton")
-                , 1)
+            , 1)
         }
     })
 }

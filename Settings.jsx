@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Icon } from '@vizality/components';
-import { SwitchItem, Category } from '@vizality/components/settings';
+import { SwitchItem, Category, RadioGroup } from '@vizality/components/settings';
 
 export default memo(({ getSetting, updateSetting, toggleSetting }) => {
     return <>
@@ -49,7 +49,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
         >
             <SwitchItem
                 children={[<SwitchIcon icon="Reply" />, "Return to the old style"]}
-                note="Do a single click instead of double clicking to send an attachment. The popout will be still shown if you're listening to Spotify or going to invite a person to play a game."
+                description="Do a single click instead of double clicking to send an attachment. The popout will be still shown if you're listening to Spotify or going to invite a person to play a game."
                 value={getSetting('attachmentOldStyle', false)}
                 onChange={() => {
                     toggleSetting('attachmentOldStyle')
@@ -57,7 +57,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             />
             <SwitchItem
                 children={[<SwitchIcon icon="PersonPlay" />, "Show a different icon when you're listening to music and it isn't possible to attach files"]}
-                note="Sometimes you can get confused when you're listening to music and chatting in a channel without upload permissions. This will change the icon, showing to you can only share your music."
+                description="Sometimes you can get confused when you're listening to music and chatting in a channel without upload permissions. This will change the icon, showing to you can only share your music."
                 value={getSetting('attachmentExtraIcon', false)}
                 onChange={() => {
                     toggleSetting('attachmentExtraIcon')
@@ -69,7 +69,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             Toolbar
         */}
         <Category
-            icon="FileUpload"
+            icon="Wrench"
             title="Toolbar"
             description="Manage discord's toolbar"
             opened={getSetting('category-toolbar', false)}
@@ -90,6 +90,26 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     toggleSetting('muteChannelButton')
                 }}
             />
+
+            <SwitchItem
+                children={[<SwitchIcon icon="People" />, "Move search button to the left"]}
+                value={getSetting('memberListButton', true)}
+                onChange={() => {
+                    toggleSetting('memberListButton')
+                }}
+            />
+
+            <RadioGroup
+                options={[
+                    { name: "Default", value: "default" },
+                    { name: "Left", value: "left" },
+                    { name: "Right", value: "right" }
+                ]}
+                value={getSetting('searchBarPosition', "default")}
+                onChange={e => {
+                    updateSetting('searchBarPosition', e.value)
+                }}
+            > Search bar position </RadioGroup>
         </Category>
     </>
 })

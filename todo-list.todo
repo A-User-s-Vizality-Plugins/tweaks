@@ -1,0 +1,21 @@
+Tweaks:
+    Message related stuff:
+        Messages:
+            ☐ No hide links when image embeds
+        Auto Complete:
+            ☐ Sticker auto complete
+        Attachment Button:
+    Toolbar:
+        ✔ Disable help button option @done (08/07/2021 18:57:26)
+        ✔ Disable disable notification button @done (08/07/2021 19:12:41)
+        ✔ Disable member button option @done (08/07/2021 19:36:47)
+        ✔ Move search button to the left/right @done (15/07/2021 01:22:48)
+    User Popout:
+        ☐ Remove no roles thing
+    Others:
+        ☐ Discord suggestions on a new server
+        ☐ Join/create light theme
+
+
+Core:
+    ✔ @today Separate files @done (08/07/2021 18:24:23)
