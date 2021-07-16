@@ -116,14 +116,14 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             User Popout
         */}
         <Category
-            icon="Experiment"
+            icon="PersonTag"
             title="User Popout"
             description="User Popout tweaks"
             opened={getSetting('user-toolbar', false)}
             onChange={() => toggleSetting('user-toolbar')}
         >
             <SwitchItem
-                children={[<SwitchIcon icon="PersonTag" />, 'Show the "No roles" text from the User Popout']}
+                children={[<SwitchIcon icon="PersonRemove" />, 'Show the "No roles" text from the User Popout']}
                 value={getSetting('showNoRolesText', true)}
                 onChange={() => {
                     toggleSetting('showNoRolesText')
