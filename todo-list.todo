@@ -11,10 +11,11 @@ Tweaks:
         ✔ Disable member button option @done (08/07/2021 19:36:47)
         ✔ Move search button to the left/right @done (15/07/2021 01:22:48)
     User Popout:
-        ☐ Remove no roles thing
+        ✔ Remove no roles thing @done (15/07/2021 21:10:19)
     Others:
         ☐ Discord suggestions on a new server
-        ☐ Join/create light theme
+        ✔ Apply dark theme on the join/create guild modal @done (16/07/2021 00:13:41)
+        ☐ Change accent color
 
 
 Core:

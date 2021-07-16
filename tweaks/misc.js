@@ -5,8 +5,7 @@ import { findInReactTree } from '@vizality/util/React';
 
 export default function (settings) {
     // create/join guild dark theme patch
-    patch(getModule(m => m.default?.displayName === "UserPopoutBody"), "default", ([props], res) => {
-        console.log(props, res)
-
+    patch(getModule(m => m.default?.displayName === "CreateGuildModal"), "default", ([props], res) => {
+        if (settings.get("darkThemeCreateJoinModal", false)) res.props.className = "theme-dark"
     })
 }

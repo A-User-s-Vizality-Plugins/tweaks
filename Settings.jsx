@@ -141,15 +141,13 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             opened={getSetting('misc-toolbar', false)}
             onChange={() => toggleSetting('misc-toolbar')}
         >
-            {/* <SwitchItem
-                children={[<SwitchIcon icon="PersonTag" />, 'Show the "No roles" text from the User Popout']}
-                value={getSetting('showNoRolesText', true)}
+            <SwitchItem
+                children={[<SwitchIcon icon="PersonTag" />, "Apply dark theme into the create/join guild modal"]}
+                value={getSetting('darkThemeCreateJoinModal', false)}
                 onChange={() => {
-                    toggleSetting('showNoRolesText')
+                    toggleSetting('darkThemeCreateJoinModal')
                 }}
-            /> */}
-
-            <div>hi this is a placeholder</div>
+            />
         </Category>
     </>
 })
