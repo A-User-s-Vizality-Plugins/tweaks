@@ -45,8 +45,8 @@ export default function (settings) {
             , moveIndex)
         }
 
-        console.log(channelToolbar)
-        console.log(props, res)
+        // console.log(channelToolbar)
+        // console.log(props, res)
     })
 }
 

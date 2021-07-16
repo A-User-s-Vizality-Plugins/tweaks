@@ -5,11 +5,11 @@ import { getModule } from '@vizality/webpack';
 import Settings from './Settings';
 import Tweaks from './tweaks';
 
-const { getChannelId } = getModule('getChannelId', 'getVoiceChannelId')
-const { getChannel } = getModule("getChannel");
+// const { getChannelId } = getModule('getChannelId', 'getVoiceChannelId')
+// const { getChannel } = getModule("getChannel");
 
-const { Permissions } = getModule("Permissions")
-const UserPermissions = getModule("getHighestRole");
+// const { Permissions } = getModule("Permissions")
+// const UserPermissions = getModule("getHighestRole");
 
 export default class Tweaks extends Plugin {
     start () {

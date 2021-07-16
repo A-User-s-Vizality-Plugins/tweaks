@@ -10,7 +10,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
         <Category
             icon="Pencil"
             title="Text Area"
-            description="Manage your text area"
+            description="Text Area tweaks"
             opened={getSetting('category-textarea', false)}
             onChange={() => toggleSetting('category-textarea')}
         >
@@ -43,7 +43,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
         <Category
             icon="FileUpload"
             title="Attachment Button"
-            description="Manage the attachment button"
+            description="Attachment Button tweaks"
             opened={getSetting('category-attachment', false)}
             onChange={() => toggleSetting('category-attachment')}
         >
@@ -71,7 +71,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
         <Category
             icon="Wrench"
             title="Toolbar"
-            description="Manage discord's toolbar"
+            description="Discord's toolbar tweaks"
             opened={getSetting('category-toolbar', false)}
             onChange={() => toggleSetting('category-toolbar')}
         >
@@ -92,7 +92,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             />
 
             <SwitchItem
-                children={[<SwitchIcon icon="People" />, "Move search button to the left"]}
+                children={[<SwitchIcon icon="People" />, "Enable Show Members button"]}
                 value={getSetting('memberListButton', true)}
                 onChange={() => {
                     toggleSetting('memberListButton')
@@ -110,6 +110,46 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     updateSetting('searchBarPosition', e.value)
                 }}
             > Search bar position </RadioGroup>
+        </Category>
+
+        {/*
+            User Popout
+        */}
+        <Category
+            icon="Experiment"
+            title="User Popout"
+            description="User Popout tweaks"
+            opened={getSetting('user-toolbar', false)}
+            onChange={() => toggleSetting('user-toolbar')}
+        >
+            <SwitchItem
+                children={[<SwitchIcon icon="PersonTag" />, 'Show the "No roles" text from the User Popout']}
+                value={getSetting('showNoRolesText', true)}
+                onChange={() => {
+                    toggleSetting('showNoRolesText')
+                }}
+            />
+        </Category>
+
+        {/*
+            Other Tweaks
+        */}
+        <Category
+            icon="Experiment"
+            title="Misc."
+            description="Other tweaks"
+            opened={getSetting('misc-toolbar', false)}
+            onChange={() => toggleSetting('misc-toolbar')}
+        >
+            {/* <SwitchItem
+                children={[<SwitchIcon icon="PersonTag" />, 'Show the "No roles" text from the User Popout']}
+                value={getSetting('showNoRolesText', true)}
+                onChange={() => {
+                    toggleSetting('showNoRolesText')
+                }}
+            /> */}
+
+            <div>hi this is a placeholder</div>
         </Category>
     </>
 })
