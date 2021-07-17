@@ -3,6 +3,7 @@ import { getModule } from '@vizality/webpack';
 import { patch } from '@vizality/patcher';
 import { findInReactTree } from '@vizality/util/React';
 import { isEmptyArray, isArray } from '@vizality/util/Array';
+import arrayUtils from "../api/array"
 
 export default function (settings) {
     // no roles
@@ -11,9 +12,7 @@ export default function (settings) {
 
         if (!settings.get('showNoRolesText', true) && isEmptyArray(props.guildMember.roles) && isArray(res.props.children)) {
             let roleElement = findInReactTree(res, comp => comp?.props?.children?.[1].key === "roles")
-            res.props.children.splice(
-                res.props.children.findIndex(element => element === roleElement)
-            , 1)
+            res.props.children = arrayUtils.removeElement(res.props.children, element => element === roleElement)
         }
     })
 }

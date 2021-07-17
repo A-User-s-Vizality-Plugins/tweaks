@@ -2,6 +2,7 @@ import React from 'react';
 import { getModule } from '@vizality/webpack';
 import { patch } from '@vizality/patcher';
 import { findInReactTree } from '@vizality/util/React';
+import arrayUtils from "../api/array"
 
 export default function(settings){
     //pre patch
@@ -14,18 +15,20 @@ export default function(settings){
         // console.log(args, res)
         let module = findInReactTree(res, comp => comp?.className?.indexOf("buttons-") == 0)
         
+        let buttons = module.children[1].props.children
         // gif button
         if (!settings.get('gifButton', true)) {
-            module.children.splice(
-                module.children.findIndex(element => element?.type?.type?.render?.displayName === "ChannelGIFPickerButton")
-            , 1)
+            buttons = arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelGIFPickerButton")
         }
 
         // sticker button
         if (!settings.get('stickerButton', true)) {
-            module.children.splice(
-                module.children.findIndex(element => element?.type?.type?.render?.displayName === "ChannelStickerPickerButton")
-            , 1)
+            buttons = arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelStickerPickerButton")
         }
+
+        // why javascript
+        module.children[1].props.children = buttons
+
+        // console.log(module)
     })
 }

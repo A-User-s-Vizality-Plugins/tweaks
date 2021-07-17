@@ -1,8 +1,8 @@
-import { default as PatchTextArea } from './textarea';
-import { default as PatchUploader } from './uploader';
-import { default as PatchToolbar } from './toolbar';
-import { default as PatchUserPopout } from './userpopout';
-import { default as PatchMisc } from './misc';
+import PatchTextArea from './textarea';
+import PatchUploader from './uploader';
+import PatchToolbar from './toolbar';
+import PatchUserPopout from './userpopout';
+import PatchMisc from './misc';
 
 export default {
     PatchTextArea,
