@@ -1,10 +1,11 @@
 {
     "name": "A user's tweaks",
-    "description": "Tweaks for your own client",
+    "description": "Tweaks for your Discord client",
     "version": "v1",
     "author": {
         "name": "A user",
         "id": "264062457448759296"
     },
+    "icon": "assets/icon.png",
     "license": "MIT"
 }
