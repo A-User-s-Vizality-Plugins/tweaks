@@ -2,6 +2,7 @@ import React from 'react';
 import { Plugin } from '@vizality/entities';
 import { patch, unpatchAll } from '@vizality/patcher';
 import { getModule } from '@vizality/webpack';
+import { assertObject, isEmptyObject } from '@vizality/util/Object';
 import Settings from './Settings';
 import Tweaks from './tweaks';
 
@@ -17,12 +18,19 @@ export default class Tweaks extends Plugin {
         this.injectStyles("style.scss")
 
         Object.values(Tweaks).forEach(tweak => {
-            if (typeof tweak !== "function") return
-            tweak(this.settings)
+            assertObject(tweak)
+            if (isEmptyObject(tweak)) return
+            tweak.start?.(this.settings)
         })
     }
 
     stop () {
         unpatchAll()
+
+        Object.values(Tweaks).forEach(tweak => {
+            assertObject(tweak)
+            if (isEmptyObject(tweak)) return
+            tweak.stop?.(this.settings)
+        })
     }
 }
