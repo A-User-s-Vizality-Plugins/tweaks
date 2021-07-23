@@ -1,9 +1,17 @@
 // i am too lazy to find a margin module so i made this
 
-.uf-marginSwitch{
+.twe-marginSwitch{
     margin-right: 12px;
 }
 
-.uf-plus-btn-color{
+.twe-plus-btn-color{
     color: var(--interactive-normal)
 }
+
+.twe-force-height .image-1tIMwV{
+    height: 500px !important
+}
+
+// :root{
+//     --brand-experiment: hsl(var(--custom-accent-color))
+// }

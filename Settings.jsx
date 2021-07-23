@@ -123,10 +123,24 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             onChange={() => toggleSetting('user-toolbar')}
         >
             <SwitchItem
-                children={[<SwitchIcon icon="PersonRemove" />, 'Show the "No roles" text from the User Popout']}
+                children={[<SwitchIcon icon="PersonRemove" />, 'Show the "No roles" text']}
                 value={getSetting('showNoRolesText', true)}
                 onChange={() => {
                     toggleSetting('showNoRolesText')
+                }}
+            />
+            <SwitchItem
+                children={[<SwitchIcon icon="NitroWheel" />, 'Show Nitro badge on banners']}
+                value={getSetting('showPremiumBadge', true)}
+                onChange={() => {
+                    toggleSetting('showPremiumBadge')
+                }}
+            />
+            <SwitchItem
+                children={[<SwitchIcon icon="NitroWheel" />, 'Show "Messge @somebody" text area']}
+                value={getSetting('showMessageSomebodyTextArea', true)}
+                onChange={() => {
+                    toggleSetting('showMessageSomebodyTextArea')
                 }}
             />
         </Category>
@@ -153,5 +167,5 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
 })
 
 const SwitchIcon = memo(({ icon }) => {
-    return <Icon name={icon} className="uf-marginSwitch" />
+    return <Icon name={icon} className="twe-marginSwitch" />
 });

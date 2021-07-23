@@ -32,7 +32,7 @@ export default function (settings) {
             currentChannel.type == 3 // Group DM
         if (attachmentPerms) return res
 
-        res.props.children = <Icon name="PersonPlay" className="uf-plus-btn-color" />
+        res.props.children = <Icon name="PersonPlay" className="twe-plus-btn-color" />
         res.type = "div"
     })
 }
