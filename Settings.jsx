@@ -123,24 +123,54 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             onChange={() => toggleSetting('user-toolbar')}
         >
             <SwitchItem
-                children={[<SwitchIcon icon="PersonRemove" />, 'Show the "No roles" text']}
-                value={getSetting('showNoRolesText', true)}
-                onChange={() => {
-                    toggleSetting('showNoRolesText')
-                }}
-            />
-            <SwitchItem
-                children={[<SwitchIcon icon="NitroWheel" />, 'Show Nitro badge on banners']}
+                children={[<SwitchIcon icon="NitroWheelAlt" />, 'Show Nitro badge on banners']}
                 value={getSetting('showPremiumBadge', true)}
                 onChange={() => {
                     toggleSetting('showPremiumBadge')
                 }}
             />
             <SwitchItem
-                children={[<SwitchIcon icon="NitroWheel" />, 'Show "Messge @somebody" text area']}
+                children={[<SwitchIcon icon="Compose" />, 'Show "Set a Server Nickname" text']}
+                value={getSetting('showSetNicknameText', true)}
+                onChange={() => {
+                    toggleSetting('showSetNicknameText')
+                }}
+            />
+            <SwitchItem
+                children={[<SwitchIcon icon="PersonRemove" />, 'Show "No roles" text']}
+                value={getSetting('showNoRolesText', true)}
+                onChange={() => {
+                    toggleSetting('showNoRolesText')
+                }}
+            />
+            <SwitchItem
+                children={[<SwitchIcon icon="At" />, 'Show "Messge @somebody" text area']}
                 value={getSetting('showMessageSomebodyTextArea', true)}
                 onChange={() => {
                     toggleSetting('showMessageSomebodyTextArea')
+                }}
+            />
+        </Category>
+
+        <Category
+            icon="ChannelText"
+            title="Channels"
+            description="Channel tweaks"
+            opened={getSetting('channel-toolbar', false)}
+            onChange={() => toggleSetting('channel-toolbar')}
+        >
+            <SwitchItem
+                children={[<SwitchIcon icon="Invite" />, "Show invite icon on channels"]}
+                value={getSetting('showChannelInviteIcon', true)}
+                onChange={() => {
+                    toggleSetting('showChannelInviteIcon')
+                }}
+            />
+            <SwitchItem
+                children={[<SwitchIcon icon="Gear" />, "Show settings icon on channels"]}
+                value={getSetting('showSettingsIcon', true)}
+                onChange={() => {
+                    toggleSetting('showSettingsIcon')
                 }}
             />
         </Category>
@@ -160,14 +190,6 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                 value={getSetting('darkThemeCreateJoinModal', false)}
                 onChange={() => {
                     toggleSetting('darkThemeCreateJoinModal')
-                }}
-            />
-
-            <SwitchItem
-                children={[<SwitchIcon icon="Invite" />, "Show invite icon on channels"]}
-                value={getSetting('showChannelInviteIcon', true)}
-                onChange={() => {
-                    toggleSetting('showChannelInviteIcon')
                 }}
             />
         </Category>

@@ -26,11 +26,5 @@ export default {
         //         </div>)
         //     }
         // })
-
-        // remove invite button in channels
-        patch(getModule(m => m.default?.displayName === "ChannelItem"), "default", ([props], res) => {
-            // console.log(props, res)
-            if (! settings.get("showChannelInviteIcon", true)) arrayUtils.removeElement(props.children, props.children[0])
-        })
     }
 }

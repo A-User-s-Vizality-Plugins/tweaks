@@ -2,7 +2,8 @@ const _remove = (array, func) => {
     array.splice(array.findIndex(func), 1)
 }
 
-const removeElement = (array, element) => {
+const removeElement = (array, element, debug = false) => {
+    if ((!array || !element) && !debug) return
     if (typeof element === "function") {
         _remove(array, element)
     } else {
