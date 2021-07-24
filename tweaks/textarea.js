@@ -19,16 +19,13 @@ export default {
             let buttons = module.children[1].props.children
             // gif button
             if (!settings.get('gifButton', true)) {
-                buttons = arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelGIFPickerButton")
+                arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelGIFPickerButton")
             }
 
             // sticker button
             if (!settings.get('stickerButton', true)) {
-                buttons = arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelStickerPickerButton")
+                arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelStickerPickerButton")
             }
-
-            // why javascript
-            module.children[1].props.children = buttons
 
             // console.log(module)
         })

@@ -162,6 +162,14 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     toggleSetting('darkThemeCreateJoinModal')
                 }}
             />
+
+            <SwitchItem
+                children={[<SwitchIcon icon="Invite" />, "Show invite icon on channels"]}
+                value={getSetting('showChannelInviteIcon', true)}
+                onChange={() => {
+                    toggleSetting('showChannelInviteIcon')
+                }}
+            />
         </Category>
     </>
 })

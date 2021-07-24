@@ -9,17 +9,17 @@ export default {
     start: function (settings) {
         // no roles
         patch(getModule(m => m.default?.displayName === "UserPopoutBody"), "default", ([props], res) => {
-            if (settings.get('showNoRolesText', true) || (!isArray(res.props.children) || !isEmptyArray(props.guildMember.roles))) return res
+            if (settings.get('showNoRolesText', true) || (!isArray(res.props.children) || !isEmptyArray(props?.guildMember?.roles))) return res
 
             let roleElement = findInReactTree(res, element => element?.props?.children?.[1].key === "roles")
-            res.props.children = arrayUtils.removeElement(res.props.children, element => element === roleElement)
+            arrayUtils.removeElement(res.props.children, element => element === roleElement)
         })
 
         // remove premium badge on banners
         patch(getModule(m => m.default?.displayName === "UserBanner"), "default", ([props], res) => {
             // console.log(props, res)
             if (settings.get('showPremiumBadge', true)) return res
-            res.props.children = arrayUtils.removeElement(res.props.children, res.props.children[0])
+            arrayUtils.removeElement(res.props.children, res.props.children[0])
         })
 
         // remove premium badge on banners

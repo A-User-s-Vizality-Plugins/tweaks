@@ -1,11 +1,13 @@
+const _remove = (array, func) => {
+    array.splice(array.findIndex(func), 1)
+}
+
 const removeElement = (array, element) => {
-    return array.filter(item => {
-        let searchModule = element
-        if (typeof element === "function") {
-            searchModule = array.find(element)
-        }
-        return item !== searchModule
-    })
+    if (typeof element === "function") {
+        _remove(array, element)
+    } else {
+        _remove(array, e => e === element)
+    }
 }
 
 const moveArray = (array, from, to) => {

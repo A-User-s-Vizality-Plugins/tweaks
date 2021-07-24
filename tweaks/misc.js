@@ -1,34 +1,7 @@
 import React from 'react';
-import { ipcRenderer } from 'electron';
 import { getModule } from '@vizality/webpack';
 import { patch } from '@vizality/patcher';
-import { findInReactTree } from '@vizality/util/React';
-import { ImageModal } from '@vizality/components'
-import { openModal } from '@vizality/modal'
-
-const { updateRemoteSettings } = getModule('updateRemoteSettings');
-const tray = getModule('setSystemTrayApplications')
-
-const customTrayItems = [
-    {
-        name: "online",
-        id: 'status_online'
-    },
-    {
-        name: "idle",
-        id: 'status_idle'
-    },
-    {
-        name: "dnd",
-        id: 'status_dnd'
-    },
-    {
-        name: "offline",
-        id: 'status_invisible'
-    }
-];
-
-let changeStatus;
+import arrayUtils from "../api/array"
 
 export default {
     start: function (settings) {
@@ -53,5 +26,11 @@ export default {
         //         </div>)
         //     }
         // })
+
+        // remove invite button in channels
+        patch(getModule(m => m.default?.displayName === "ChannelItem"), "default", ([props], res) => {
+            // console.log(props, res)
+            if (! settings.get("showChannelInviteIcon", true)) arrayUtils.removeElement(props.children, props.children[0])
+        })
     }
 }
