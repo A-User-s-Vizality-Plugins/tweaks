@@ -9,7 +9,7 @@ const { getChannelId } = getModule('getChannelId', 'getVoiceChannelId')
 const { getChannel } = getModule("getChannel");
 
 export default {
-    start: function(settings) {
+    start: (settings) => {
         //patch text area
         patch(getModule(m => m.default?.displayName === "ChannelAttachMenu"), "default", ([props], res) => {
             if (settings.get("attachmentOldStyle")) {

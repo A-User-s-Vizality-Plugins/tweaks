@@ -6,7 +6,7 @@ import { isEmptyArray, isArray } from '@vizality/util/Array';
 import arrayUtils from "../api/array"
 
 export default {
-    start: function (settings) {
+    start: (settings) => {
         // no roles
         patch(getModule(m => m.default?.displayName === "UserPopoutBody"), "default", ([props], res) => {
             if (settings.get('showNoRolesText', true) || (!isArray(res.props.children) || !isEmptyArray(props?.guildMember?.roles))) return res

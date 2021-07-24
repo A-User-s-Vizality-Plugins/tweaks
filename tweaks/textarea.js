@@ -5,7 +5,7 @@ import { findInReactTree } from '@vizality/util/React';
 import arrayUtils from "../api/array"
 
 export default {
-    start: function (settings) {
+    start: (settings) => {
         //pre patch
         patch(getModule(m => m.type?.render?.displayName === "ChannelTextAreaContainer").type, "render", ([props]) => {
             if (!settings.get('giftButton', true)) props.shouldRenderPremiumGiftButton = false

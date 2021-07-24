@@ -5,7 +5,7 @@ import { isArray } from '@vizality/util/Array';
 import arrayUtils from "../api/array"
 
 export default {
-    start: function (settings) {
+    start: (settings) => {
         patch(getModule(m => m.default?.displayName === "HeaderBar"), "default", ([props], res) => {
             let toolbar = props.toolbar
             let toolbarChildren = toolbar.props.children

@@ -4,7 +4,7 @@ import { patch } from '@vizality/patcher';
 import arrayUtils from "../api/array"
 
 export default {
-    start: function (settings) {
+    start: (settings) => {
         //dark theme on create/join guild modal
         patch(getModule(m => m.default?.displayName === "CreateGuildModal"), "default", (args, res) => {
             if (!settings.get("darkThemeCreateJoinModal", false)) return res
