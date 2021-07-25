@@ -1,6 +1,6 @@
 import React from 'react';
 import { getModule } from '@vizality/webpack';
-import patcher, { patch } from '@vizality/patcher';
+import { patch } from '@vizality/patcher';
 import arrayUtils from "../api/array"
 
 const { getStatus } = getModule('getStatus');
