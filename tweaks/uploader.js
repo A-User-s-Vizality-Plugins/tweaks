@@ -10,7 +10,10 @@ const { getChannel } = getModule("getChannel");
 
 export default {
     start: (settings) => {
-        //patch text area
+        /**
+         * patch text area
+         * @see {@link https://github.com/QWERTxD/BetterDiscordPlugins/tree/main/OldUpload}
+         */
         patch(getModule(m => m.default?.displayName === "ChannelAttachMenu"), "default", ([props], res) => {
             if (settings.get("attachmentOldStyle")) {
                 if (!props.options || props.options.length > 1 || props.options[0]?.type !== "UPLOAD_A_FILE") return res

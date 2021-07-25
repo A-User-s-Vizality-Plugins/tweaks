@@ -35,6 +35,14 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     toggleSetting('stickerButton')
                 }}
             />
+
+            <SwitchItem
+                children={[<SwitchIcon icon="Sticker" />, "Enable Sticker suggestions"]}
+                value={getSetting('stickerSuggestions', true)}
+                onChange={() => {
+                    toggleSetting('stickerSuggestions')
+                }}
+            />
         </Category>
 
         {/*
@@ -190,6 +198,13 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                 value={getSetting('darkThemeCreateJoinModal', false)}
                 onChange={() => {
                     toggleSetting('darkThemeCreateJoinModal')
+                }}
+            />
+            <SwitchItem
+                children={[<SwitchIcon icon="PersonTag" />, "Automatically set to DnD when playing a gane"]}
+                value={getSetting('autoGameDnD', false)}
+                onChange={() => {
+                    toggleSetting('autoGameDnD')
                 }}
             />
         </Category>
