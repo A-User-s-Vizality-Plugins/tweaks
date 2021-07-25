@@ -34,7 +34,7 @@ export default {
          * @see {@link https://github.com/ordinall/BetterDiscord-Stuff/blob/master/Plugins/DisableStickerSuggestions/DisableStickerSuggestions.plugin.js}
         */
         patch(getModule("queryStickers"), "queryStickers", ([props], res) => {
-            console.log(props, res)
+            // console.log(props, res)
             if (props[0] && !settings.get("stickerSuggestions", true)) return { stickers: [] }
         })
     }
