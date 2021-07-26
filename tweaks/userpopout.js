@@ -9,7 +9,7 @@ export default {
     start: (settings) => {
         // no roles
         patch(getModule(m => m.default?.displayName === "UserPopoutBody"), "default", ([props], res) => {
-            if (settings.get('showNoRolesText', true) || (!isArray(res.props.children) || !isEmptyArray(props?.guildMember?.roles))) return res
+            if (settings.get('showNoRolesText', true) || (!isArray(res.props.children) || !isEmptyArray(props?.guildMember?.roles))) return
 
             let roleElement = findInReactTree(res, e => e?.props?.children?.[1]?.key === "roles")
             arrayUtils.removeElement(res.props.children, roleElement)
@@ -18,13 +18,13 @@ export default {
         // remove premium badge on banners
         patch(getModule(m => m.default?.displayName === "UserBanner"), "default", ([props], res) => {
             // console.log(props, res)
-            if (settings.get('showPremiumBadge', true)) return res
+            if (settings.get('showPremiumBadge', true)) return
             arrayUtils.removeElement(res?.props?.children, res?.props?.children?.[0])
         })
 
         // remove premium badge on banners
         patch(getModule(m => m.default?.displayName === "UserPopoutFooter"), "default", ([props]) => {
-            if (settings.get('showMessageSomebodyTextArea', true)) return props
+            if (settings.get('showMessageSomebodyTextArea', true)) return
             props.canDM = false
             // console.log(props)
         }, "before")
@@ -33,7 +33,7 @@ export default {
         patch(getModule("UserPopoutInfo"), "UserPopoutInfo", ([props], res) => {
             console.log(props, res)
 
-            if (settings.get('showSetNicknameText', true)) return res
+            if (settings.get('showSetNicknameText', true)) return
             let headerText = findInReactTree(res, e => e?.props?.className?.indexOf("headerText-") == 0)
             arrayUtils.removeElement(headerText.props.children, e => e?.props?.className?.indexOf("setIdentityLink-") == 0)
         })

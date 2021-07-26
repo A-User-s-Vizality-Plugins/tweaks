@@ -16,7 +16,7 @@ export default {
          */
         patch(getModule(m => m.default?.displayName === "ChannelAttachMenu"), "default", ([props], res) => {
             if (settings.get("attachmentOldStyle")) {
-                if (!props.options || props.options.length > 1 || props.options[0]?.type !== "UPLOAD_A_FILE") return res
+                if (!props.options || props.options.length > 1 || props.options[0]?.type !== "UPLOAD_A_FILE") return
 
                 props.onClose()
                 props.onFileUpload()
@@ -25,7 +25,7 @@ export default {
 
         //patch pluscircle
         patch(getModule(m => m.default?.displayName === "PlusCirclePlay"), "default", ([props], res) => {
-            if ([props].foreground !== "attachButtonPlay-3iJ0mf" || !settings.get("attachmentExtraIcon", false)) return res
+            if ([props].foreground !== "attachButtonPlay-3iJ0mf" || !settings.get("attachmentExtraIcon", false)) return
 
             const currentChannel = getChannel(getChannelId())
             const attachmentPerms = (UserPermissions.can(

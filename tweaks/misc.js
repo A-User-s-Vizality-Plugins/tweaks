@@ -17,7 +17,7 @@ export default {
     start: (settings) => {
         //dark theme on create/join guild modal
         patch(getModule(m => m.default?.displayName === "CreateGuildModal"), "default", (args, res) => {
-            if (!settings.get("darkThemeCreateJoinModal", false)) return res
+            if (!settings.get("darkThemeCreateJoinModal", false)) return
             res.props.className = "theme-dark"
         })
 
@@ -59,10 +59,6 @@ export default {
         // patch(getModule(m => m.default?.displayName === "NativeImageContextMenu"), "default", ([props], res) => {
         //     console.log(props, res)
         // })
-
-        patch(getModule(m => m.default?.displayName === "AccountConnected"), "default", ([props], res) => {
-            console.log(props, res)
-        })
     },
 
     stop: (settings) => {
