@@ -35,7 +35,8 @@ export default {
         patch(BadgeModule, "NumberBadge", ([props], res) => {
             if (!settings.get("noPingCounterLimit", false)) return
             res.props.children = props.count
-            delete res.props.style.width
+
+            res.props.style.width = 10 + 6 * props.count.toString().length
         })
     }
 }
