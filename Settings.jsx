@@ -213,7 +213,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     toggleSetting('noPingCounterLimit')
                 }}
             />
-            <Text size={Text.Sizes.SIZE_12} color={Text.Colors.MUTED}>Note: Hover the guilds to apply the settings</Text>
+            <Text size={Text.Sizes.SIZE_12} color={Text.Colors.MUTED}>Note: Hover the guilds to update them</Text>
         </Category>
 
         {/*
