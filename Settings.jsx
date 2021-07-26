@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Icon } from '@vizality/components';
+import { Icon, Text } from '@vizality/components';
 import { SwitchItem, Category, RadioGroup } from '@vizality/components/settings';
 
 export default memo(({ getSetting, updateSetting, toggleSetting }) => {
@@ -152,7 +152,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                 }}
             />
             <SwitchItem
-                children={[<SwitchIcon icon="At" />, 'Show "Messge @somebody" text area']}
+                children={[<SwitchIcon icon="ChatNew" />, 'Show "Messge @somebody" text area']}
                 value={getSetting('showMessageSomebodyTextArea', true)}
                 onChange={() => {
                     toggleSetting('showMessageSomebodyTextArea')
@@ -181,6 +181,39 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     toggleSetting('showSettingsIcon')
                 }}
             />
+        </Category>
+
+        <Category
+            icon="Discover"
+            title="Guilds"
+            description="Guilds tweaks"
+            opened={getSetting('guild-toolbar', false)}
+            onChange={() => toggleSetting('guild-toolbar')}
+        >
+            <SwitchItem
+                children={[<SwitchIcon icon="At" />, "Show a ping counter"]}
+                value={getSetting('showPingCounter', false)}
+                onChange={() => {
+                    toggleSetting('showPingCounter')
+                }}
+            />
+            {getSetting('showPingCounter', false) && <SwitchItem
+                children={[<SwitchIcon icon="Slash" />, "Separate guild counter from DM counter"]}
+                description="It will show an upper badge when you have a DM ping"
+                value={getSetting('separatePingCounter', true)}
+                onChange={() => {
+                    toggleSetting('separatePingCounter')
+                }}
+            />}
+            <SwitchItem
+                children={[<SwitchIcon icon="ShortAnswer" />, "Show full ping counter"]}
+                description="Removes the 99+ ping count cap"
+                value={getSetting('noPingCounterLimit', false)}
+                onChange={() => {
+                    toggleSetting('noPingCounterLimit')
+                }}
+            />
+            <Text size={Text.Sizes.SIZE_12} color={Text.Colors.MUTED}>Note: Hover the guilds to apply the settings</Text>
         </Category>
 
         {/*

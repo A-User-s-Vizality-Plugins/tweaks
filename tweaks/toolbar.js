@@ -28,14 +28,15 @@ export default {
             }
 
             // search bar
-            if (settings.get('searchBarPosition', "default") !== "default") {
+            let searchBar = element => element?.type?.displayName === "FluxContainer(Search)"
+            if (settings.get('searchBarPosition', "default") !== "default" && toolbarChildren.find(searchBar)) {
                 let moveIndex;
                 switch (settings.get('searchBarPosition', "left")) {
                     case "left": moveIndex = 0
                     case "right": moveIndex = toolbarChildren.length - 1
                 }
                 toolbar.props.children = arrayUtils.moveArray(toolbar.props.children,
-                    toolbarChildren.findIndex(element => element?.type?.displayName === "FluxContainer(Search)")
+                    toolbarChildren.findIndex(searchBar)
                     , moveIndex)
             }
         })

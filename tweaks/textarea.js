@@ -16,14 +16,15 @@ export default {
             // console.log(args, res)
             let module = findInReactTree(res, comp => comp?.className?.indexOf("buttons-") == 0)
 
-            let buttons = module.children[1].props.children
+            let buttons = module?.children[1]?.props?.children
+
             // gif button
-            if (!settings.get('gifButton', true)) {
+            if (!settings.get('gifButton', true) && buttons) {
                 arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelGIFPickerButton")
             }
 
             // sticker button
-            if (!settings.get('stickerButton', true)) {
+            if (!settings.get('stickerButton', true) && buttons) {
                 arrayUtils.removeElement(buttons, element => element?.type?.type?.render?.displayName === "ChannelStickerPickerButton")
             }
 

@@ -59,6 +59,10 @@ export default {
         // patch(getModule(m => m.default?.displayName === "NativeImageContextMenu"), "default", ([props], res) => {
         //     console.log(props, res)
         // })
+
+        patch(getModule(m => m.default?.displayName === "AccountConnected"), "default", ([props], res) => {
+            console.log(props, res)
+        })
     },
 
     stop: (settings) => {
