@@ -38,5 +38,9 @@ export default {
 
             res.props.style.width = 10 + 6 * props.count.toString().length
         })
+
+        // patch(getModule("Guild").Guild.prototype, "render", ([props], res) => {
+        //     console.log(props, res)
+        // })
     }
 }

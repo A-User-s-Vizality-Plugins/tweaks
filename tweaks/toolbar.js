@@ -18,12 +18,12 @@ export default {
             }
 
             // mute button
-            if (!settings.get("muteChannelButton", true) && channelToolbar) {
+            if (!settings.get("muteChannelButton", true) && channelToolbar && isArray(channelToolbar)) {
                 arrayUtils.removeElement(channelToolbar, element => element?.key === "mute")
             }
 
             // member list button
-            if (!settings.get("memberListButton", true) && channelToolbar) {
+            if (!settings.get("memberListButton", true) && channelToolbar && isArray(channelToolbar)) {
                 arrayUtils.removeElement(channelToolbar, element => element?.key === "members")
             }
 

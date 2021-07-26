@@ -29,7 +29,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                 }}
             />
             <SwitchItem
-                children={[<SwitchIcon icon="Sticker" />, "Display Sticker button"]}
+                children={[<SwitchIcon icon="StickerSmall" />, "Display Sticker button"]}
                 value={getSetting('stickerButton', true)}
                 onChange={() => {
                     toggleSetting('stickerButton')
