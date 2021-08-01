@@ -14,8 +14,6 @@ const ThreadNotifStore = getModule("setNotificationSetting")
 */
 let _dndWhilePlaying
 
-let _threadJoin
-
 export default {
     start: (settings) => {
         //dark theme on create/join guild modal
@@ -44,6 +42,13 @@ export default {
             getModule('updateRemoteSettings').updateRemoteSettings({ status: "dnd" })
         }
         Dispatcher.subscribe("RUNNING_GAMES_CHANGE", _dndWhilePlaying)
+        
+        
+
+        patch(getModule("getCurrentUser"), "getCurrentUser", ([props], res) => {
+            if (typeof settings.get("fakeNitroLevel", null) !== "number") return res
+            res.premiumType = settings.get("fakeNitroLevel")
+        })
     },
 
     stop: (settings) => {

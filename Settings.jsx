@@ -1,6 +1,9 @@
 import React, { memo } from 'react';
 import { Icon, Text } from '@vizality/components';
 import { SwitchItem, Category, RadioGroup } from '@vizality/components/settings';
+import { getModule } from '@vizality/webpack';
+import { sleep } from '@vizality/util/Time';
+const { getCurrentUser } = getModule("getCurrentUser")
 
 export default memo(({ getSetting, updateSetting, toggleSetting }) => {
     return <>
@@ -245,9 +248,43 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     toggleSetting('autoGameDnD')
                 }}
             />
+            <RadioGroup
+                options={[
+                    { name: "Don't change", value: null },
+                    { name: "No nitro", value: 0 },
+                    { name: "Nitro Classic", value: 1 },
+                    { name: "Nitro", value: 2 }
+                ]}
+                value={getSetting('fakeNitroLevel', null)}
+                onChange={async e => {
+                    updateSetting('fakeNitroLevel', e.value)
+                    await sleep(10)
+                    if (getSetting('fakeNitroLevel', null) != getCurrentUser().premiumType) {
+                        sendRefreshToast()
+                    }
+                }}
+            > Fake nitro level </RadioGroup>
         </Category>
     </>
 })
+
+const sendRefreshToast = (reopenApp = false) => {
+    vizality.api.notifications.sendToast({
+        id: 'tweaks-refresh',
+        header: "Refresh to apply changes",
+        content: "To apply the changes, you'll have to refresh Discord",
+        icon: 'Refresh',
+        timeout: 15e3,
+        buttons: [{
+            text: "Refresh",
+            color: 'green',
+            onClick: () => {
+                vizality.api.notifications.closeToast('tweaks-refresh')
+                document.location.reload()
+            }
+        }]
+    })
+}
 
 const SwitchIcon = memo(({ icon }) => {
     return <Icon name={icon} className="twe-marginSwitch" />
