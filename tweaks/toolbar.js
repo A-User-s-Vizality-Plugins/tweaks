@@ -39,23 +39,27 @@ export default {
                 }
             }
             
-            // if (isThread) {
-            //     let threadToolbar = findInReactTree(res, e => e.props?.className?.indexOf("toolbar-") == 0)
-            //     console.log("hi its here from thread", threadToolbar)
+            if (isThread) {
+                const _oldChildren = toolbar?.type
+                if (typeof _oldChildren === "function") {
+                    toolbar.type = thisArgs => {
+                        let typeRes
+                        try {
+                            typeRes = _oldChildren(thisArgs)
+                            // console.log("sucessful mission", thisArgs, typeRes)
 
-            //     const _oldChildren = threadToolbar?.toolbar?.type
-            //     if (typeof threadToolbar?.toolbar?.type !== "function") return
-            //     threadToolbar.toolbar.type = (...args) => {
-            //         let insideRes
-            //         try {
-            //             insideRes = _oldChildren(this, arguments)
-            //             console.log(args, insideRes)
-            //         } catch (err) {
-            //             error({ labels: _labels.concat("monkeypatch", "remove mute button from threads"), message: ["horrible error happened:", err] })
-            //         }
-            //         return insideRes
-            //     }
-            // }
+                            //remove notification button
+                            if (!settings.get("threadNotificationButton", true)) {
+                                arrayUtils.removeElement(typeRes?.props?.children, e => e.type.displayName === "ThreadNotificationSettingsButton")
+                            }
+                        } catch (err) {
+                            error({ labels: _labels.concat("monkeypatch", "remove mute button from threads"), message: ["horrible error happened:", err] })
+                            return typeRes
+                        }
+                        return typeRes
+                    }
+                }
+            }
 
             // search bar
             let searchBar = element => element?.type?.displayName === SEARCH_BAR
@@ -83,7 +87,7 @@ export default {
                     insideRes = _oldChildren.apply(this, arguments)
                     if (!insideRes?.props?.children?.props) return insideRes
                     insideRes.props.children.props = {}
-                    console.log(args, insideRes)
+                    // console.log(args, insideRes)
                 } catch (err) {
                     error({ labels: _labels.concat("monkeypatch", "remove thread indicator"), message: ["horrible error happened:", err]})
                 }

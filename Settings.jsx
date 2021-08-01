@@ -73,101 +73,6 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
             />
         </Category>
 
-        {/*
-            Toolbar
-        */}
-        <Category
-            icon="Wrench"
-            title="Toolbar"
-            description="Discord's toolbar tweaks"
-            opened={getSetting('category-toolbar', false)}
-            onChange={() => toggleSetting('category-toolbar')}
-        >
-            <SwitchItem
-                children={[<SwitchIcon icon="HelpCircle" />, "Enable Help button"]}
-                value={getSetting('helpButton', true)}
-                onChange={() => {
-                    toggleSetting('helpButton')
-                }}
-            />
-
-            <SwitchItem
-                children={[<SwitchIcon icon="BellOff" />, "Enable Mute Channel button"]}
-                value={getSetting('muteChannelButton', true)}
-                onChange={() => {
-                    toggleSetting('muteChannelButton')
-                }}
-            />
-
-            <SwitchItem
-                children={[<SwitchIcon icon="People" />, "Enable Show Members button"]}
-                value={getSetting('memberListButton', true)}
-                onChange={() => {
-                    toggleSetting('memberListButton')
-                }}
-            />
-
-            <SwitchItem
-                children={[<SwitchIcon icon="ThreadIcon" />, "Enable thread counter"]}
-                value={getSetting('threadCounter', true)}
-                onChange={() => {
-                    toggleSetting('threadCounter')
-                }}
-            />
-
-            <RadioGroup
-                options={[
-                    { name: "Default", value: "default" },
-                    { name: "Left", value: "left" },
-                    { name: "Right", value: "right" }
-                ]}
-                value={getSetting('searchBarPosition', "default")}
-                onChange={e => {
-                    updateSetting('searchBarPosition', e.value)
-                }}
-            > Search bar position </RadioGroup>
-        </Category>
-
-        {/*
-            User Popout
-        */}
-        <Category
-            icon="PersonTag"
-            title="User Popout"
-            description="User Popout tweaks"
-            opened={getSetting('user-toolbar', false)}
-            onChange={() => toggleSetting('user-toolbar')}
-        >
-            <SwitchItem
-                children={[<SwitchIcon icon="NitroWheelAlt" />, 'Show Nitro badge on banners']}
-                value={getSetting('showPremiumBadge', true)}
-                onChange={() => {
-                    toggleSetting('showPremiumBadge')
-                }}
-            />
-            <SwitchItem
-                children={[<SwitchIcon icon="Compose" />, 'Show "Set a Server Nickname" text']}
-                value={getSetting('showSetNicknameText', true)}
-                onChange={() => {
-                    toggleSetting('showSetNicknameText')
-                }}
-            />
-            <SwitchItem
-                children={[<SwitchIcon icon="PersonRemove" />, 'Show "No roles" text']}
-                value={getSetting('showNoRolesText', true)}
-                onChange={() => {
-                    toggleSetting('showNoRolesText')
-                }}
-            />
-            <SwitchItem
-                children={[<SwitchIcon icon="ChatNew" />, 'Show "Messge @somebody" text area']}
-                value={getSetting('showMessageSomebodyTextArea', true)}
-                onChange={() => {
-                    toggleSetting('showMessageSomebodyTextArea')
-                }}
-            />
-        </Category>
-
         <Category
             icon="ChannelText"
             title="Channels"
@@ -189,6 +94,90 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                     toggleSetting('showSettingsIcon')
                 }}
             />
+
+            {/*
+                Toolbar
+            */}
+            <Category
+                icon="Wrench"
+                title="Toolbar"
+                description="Discord's toolbar tweaks"
+                opened={getSetting('category-toolbar', false)}
+                onChange={() => toggleSetting('category-toolbar')}
+            >
+                <SwitchItem
+                    children={[<SwitchIcon icon="HelpCircle" />, "Enable Help button"]}
+                    value={getSetting('helpButton', true)}
+                    onChange={() => {
+                        toggleSetting('helpButton')
+                    }}
+                />
+
+                <SwitchItem
+                    children={[<SwitchIcon icon="BellOff" />, "Enable Mute Channel button"]}
+                    value={getSetting('muteChannelButton', true)}
+                    onChange={() => {
+                        toggleSetting('muteChannelButton')
+                    }}
+                />
+
+                <SwitchItem
+                    children={[<SwitchIcon icon="People" />, "Enable Show Members button"]}
+                    value={getSetting('memberListButton', true)}
+                    onChange={() => {
+                        toggleSetting('memberListButton')
+                    }}
+                />
+
+                <RadioGroup
+                    options={[
+                        { name: "Default", value: "default" },
+                        { name: "Left", value: "left" },
+                        { name: "Right", value: "right" }
+                    ]}
+                    value={getSetting('searchBarPosition', "default")}
+                    onChange={e => {
+                        updateSetting('searchBarPosition', e.value)
+                    }}
+                > Search bar position </RadioGroup>
+            </Category>
+
+            {/*
+                Threads
+            */}
+            <Category
+                icon="ThreadIcon"
+                title="Threads"
+                description="Thread tweaks"
+                opened={getSetting('user-toolbar', false)}
+                onChange={() => toggleSetting('user-toolbar')}
+            >
+                <SwitchItem
+                    children={[<SwitchIcon icon="ThreadIcon" />, "Display thread counter"]}
+                    value={getSetting('threadCounter', true)}
+                    onChange={() => {
+                        toggleSetting('threadCounter')
+                    }}
+                />
+                <SwitchItem
+                    children={[<SwitchIcon icon="BellOff" />, "Display thread notification button"]}
+                    value={getSetting('threadNotificationButton', true)}
+                    onChange={() => {
+                        toggleSetting('threadNotificationButton')
+                    }}
+                />
+                <RadioGroup
+                    options={[
+                        { name: "All messages", value: 2 },
+                        { name: ["Only ", <strong>@mentions</strong>], value: 4 },
+                        { name: "Nothing", value: 8 }
+                    ]}
+                    value={getSetting('joinThreadNotificationValue', 2)}
+                    onChange={e => {
+                        updateSetting('joinThreadNotificationValue', e.value)
+                    }}
+                > Default notification state when a thread is created/joined </RadioGroup>
+            </Category>
         </Category>
 
         <Category
