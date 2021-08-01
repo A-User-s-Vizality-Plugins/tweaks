@@ -166,6 +166,14 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                         toggleSetting('threadNotificationButton')
                     }}
                 />
+                <SwitchItem
+                    children={[<SwitchIcon icon="VideoLayout" />, '"Open in Split View" option in context menu']}
+                    description="Right click a thread and you'll see an option to open in Split View"
+                    value={getSetting('openSplitViewContextMenu', false)}
+                    onChange={() => {
+                        toggleSetting('openSplitViewContextMenu')
+                    }}
+                />
                 <RadioGroup
                     options={[
                         { name: "All messages", value: 2 },
@@ -231,7 +239,7 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                 }}
             />
             <SwitchItem
-                children={[<SwitchIcon icon="PersonTag" />, "Automatically set to DnD when playing a gane"]}
+                children={[<SwitchIcon icon="Activity" />, "Automatically set to DnD when playing a gane"]}
                 value={getSetting('autoGameDnD', false)}
                 onChange={() => {
                     toggleSetting('autoGameDnD')

@@ -31,7 +31,7 @@ export default {
 
         // remove premium badge on banners
         patch(getModule("UserPopoutInfo"), "UserPopoutInfo", ([props], res) => {
-            console.log(props, res)
+            // console.log(props, res)
 
             if (settings.get('showSetNicknameText', true)) return
             let headerText = findInReactTree(res, e => e?.props?.className?.indexOf("headerText-") == 0)
