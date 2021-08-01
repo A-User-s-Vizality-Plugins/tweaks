@@ -107,6 +107,14 @@ export default memo(({ getSetting, updateSetting, toggleSetting }) => {
                 }}
             />
 
+            <SwitchItem
+                children={[<SwitchIcon icon="ThreadIcon" />, "Enable thread counter"]}
+                value={getSetting('threadCounter', true)}
+                onChange={() => {
+                    toggleSetting('threadCounter')
+                }}
+            />
+
             <RadioGroup
                 options={[
                     { name: "Default", value: "default" },

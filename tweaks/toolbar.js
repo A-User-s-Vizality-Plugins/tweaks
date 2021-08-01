@@ -18,7 +18,7 @@ const _labels = ['tweaks']
 export default {
     start: (settings) => {
         patch(getModule(m => m.default?.displayName === "HeaderBar"), "default", ([props], res) => {
-            console.log(props, res)
+            // console.log(props, res)
             let toolbar = props.toolbar
             const isThread = !!props["aria-label"]
             let toolbarChildren = toolbar.props.children
@@ -72,14 +72,15 @@ export default {
         })
 
         patch(getModule(m => m.default?.displayName === "ThreadBrowserPopout"), "default", ([props], res) => {
-            console.log(props, res)
+            // console.log(props, res)
+            if (settings.get("threadCounter", true)) return
 
             const _oldChildren = res?.props?.children
-            if (typeof res?.props?.children !== "function") return
-            res.props.children = (...args) => {
+            if (typeof _oldChildren !== "function") return
+            res.props.children = (...args) => { // why discord, why you made children as a function
                 let insideRes
                 try {
-                    insideRes = _oldChildren(this, arguments)
+                    insideRes = _oldChildren.apply(this, arguments)
                     if (!insideRes?.props?.children?.props) return insideRes
                     insideRes.props.children.props = {}
                     console.log(args, insideRes)
